@@ -4,12 +4,14 @@
   "version": "0.1.0",
   "description": "Take some screenshots at different screensizes",
   "main": "index.js",
-  "bin": "bin/cmd.js",
+  "bin": {
+    "saycheese": "bin/cmd.js"
+  },
   "dependencies": {
-    "temp": "*",
-    "phantom": "*",
-    "yargs": "*",
-    "async": "*"
+    "temp": "~0.7",
+    "phantom": "~0.5",
+    "yargs": "~1.0",
+    "async": "~0.2"
   },
   "devDependencies": {},
   "scripts": {},
