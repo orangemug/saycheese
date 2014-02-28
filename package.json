@@ -1,0 +1,17 @@
+{
+  "name": "saycheese",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Take some screenshots at different screensizes",
+  "main": "index.js",
+  "bin": "bin/cmd.js",
+  "dependencies": {
+    "temp": "*",
+    "phantom": "*",
+    "yargs": "*",
+    "async": "*"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "license": "MIT"
+}
