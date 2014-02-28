@@ -1,3 +1,4 @@
+var async = require("async");
 var yargs = require('yargs');
 var sayCheese = require("../");
 
@@ -10,8 +11,8 @@ var argv = yargs
     .describe('s', 'Size of screen, format 768x1024 (multiple allowed)')
     .alias('o', 'output')
     .describe('o', 'Output to file')
-    // .alias('d', 'display')
-    // .describe('d', 'Display in browser')
+    // .alias('w', 'watch')
+    // .describe('w', 'Watch the files')
     .argv;
 
 // HELP!
@@ -20,7 +21,7 @@ if(argv.h) {
   return;
 }
 
-var url = argv._[0];
+var urls = argv._;
 var sizes = argv.size;
 if(!(sizes instanceof Array)) {
   sizes = [sizes];
@@ -38,7 +39,12 @@ var opts = {
   output:  argv.output,
 };
 
-sayCheese(url, sizes, opts, function(err) {
+function process(url, done) {
+  console.log("processing:", url);
+  sayCheese(url, sizes, opts, done);
+};
+
+async.eachSeries(urls, process, function(err) {
   if(err) {
     console.log(err);
     return yargs.showHelp();
